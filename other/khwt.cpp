@@ -38,13 +38,14 @@ int main() {
 		for(int i = 0; i + k < n; ++ i)
 		{  
 			int max_len = (P[i].R-1)/2;
+			int min_len = P[i].L/2;
 			for(int j = i; j < i + k; ++ j){
 				if(dp[i][j] != -1 && dp[j+1][i+k] != -1)	{
 					dp[i][i+k] = j;
 					break;
 				}
 			} 
-			if(dp[i][i+k] == -1 && k <= max_len && dp[i+1][i+k] != -1 )
+			if(dp[i][i+k] == -1 && k <= max_len && dp[i+1][i+k] != -1 && k >= min_len)
 			{
 				dp[i][i+k] = i+k;
 			}
